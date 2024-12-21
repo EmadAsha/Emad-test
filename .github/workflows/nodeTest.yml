@@ -30,7 +30,7 @@ jobs:
       - name: Run deployment commands on server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << EOF
-            cd /path/to/your/project
+            cd /path/emad-test
             git pull origin main
             npm install
             npm run build
