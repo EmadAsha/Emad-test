@@ -47,7 +47,7 @@ jobs:
         SSH_KEY: ${{ secrets.SSH_KEY }}
       run: |
         echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-        ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "mkdir -p /var/www/emad"
+        
         scp -o StrictHostKeyChecking=no -r dist/* $SSH_USER@$SSH_HOST:/var/www/emad
 
     
