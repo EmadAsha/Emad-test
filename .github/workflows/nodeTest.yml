@@ -30,7 +30,7 @@ jobs:
       - name: Run deployment commands on server
         run: |
           ssh -o StrictHostKeyChecking=no root@168.119.238.20 << EOF
-            cd /root/emad
+            cd /root/emad/Emad-test
             git pull origin main
             npm install
             npm run build
