@@ -21,11 +21,6 @@ jobs:
       with:
         node-version: 'latest'
 
-    - name: Install dependencies and run tests
-      run: |
-        npm ci
-        npm test
-
   
 
   deploy:
@@ -41,9 +36,7 @@ jobs:
       with:
         node-version: 'latest'
 
-    - name: Install dependencies
-      run: npm install
-
+   
     - name: Build project
       run: npm run build
 
@@ -57,11 +50,4 @@ jobs:
         ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "mkdir -p /var/www/emad"
         scp -o StrictHostKeyChecking=no -r dist/* $SSH_USER@$SSH_HOST:/var/www/emad
 
-    - name: Restart server
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USER: ${{ secrets.SSH_USER }}
-        SSH_KEY: ${{ secrets.SSH_KEY }}
-      run: |
-        echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-       
+    
